@@ -59,12 +59,13 @@ mustang.moveCar(); // Increments mustang' move property by 10. Returns the new m
       invoking moveCar on the right object (prius vs mustang).
   */
 
-function Car(make, model, year) {
+function Car(make, model, year, move) {
   this.make = make;
   this.model = model;
   this.year = year;
   this.moveCar = function () {
-    return this.moveCar + 10;
+    this.move = move;
+    return this.move + 10;
   };
 }
 
@@ -101,12 +102,15 @@ function User(name, age, email, savedPosts) {
   this.name = name;
   this.age = age;
   this.email = email;
-  this.savedPosts = [];
+  this.savedPosts = [
+    (this.id = id),
+    (this.title = title),
+    (this.rating = rating),
+  ];
 }
 
 User.prototype.addSavedPost = function (id, title, rating) {
-  newPost = this.savedPosts.push({ id: id, title: title, rating: rating });
-  return (this.savedPosts = newPost);
+  return { id: id, title: title, rating: rating };
 };
 
 ////////// PROBLEM 6 //////////
@@ -115,6 +119,7 @@ User.prototype.addSavedPost = function (id, title, rating) {
 // Write a prototype method for the User constructor function named removeSavedPost that will take in one number parameter representing the post id. Use this id to find and remove the matching object in the savedPosts array.
 
 // Code here
+User.prototype.removeSavedPost = function (id) {};
 
 ////////// PROBLEM 7 //////////
 
